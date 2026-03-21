@@ -1,0 +1,138 @@
+{
+  "common": {
+    "home": "Beranda",
+    "destinations": "Destinasi",
+    "articles": "Artikel",
+    "about": "Tentang",
+    "explore": "Jelajahi",
+    "readMore": "Baca Selengkapnya",
+    "viewAll": "Lihat Semua",
+    "back": "Kembali",
+    "share": "Bagikan",
+    "loading": "Memuat...",
+    "loadMore": "Memuat lebih banyak...",
+    "noMore": "Anda telah melihat semua artikel",
+    "search": "Cari",
+    "categories": "Kategori",
+    "tags": "Tag",
+    "relatedArticles": "Artikel Terkait",
+    "minutes": "menit",
+    "author": "Penulis",
+    "publishedAt": "Dipublikasikan"
+  },
+  "nav": {
+    "home": "Beranda",
+    "destinations": "Destinasi",
+    "articles": "Artikel",
+    "about": "Tentang"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Pantai Logending",
+      "subtitle": "Keindahan Pantai Selatan dengan Sentuhan Sejarah",
+      "description": "Nikmati pemandangan spektakuler muara Sungai Bodo dan hamparan pasir hitam yang eksotis",
+      "cta": "Jelajahi Sekarang"
+    },
+    "slide2": {
+      "title": "Gua Jatijajar",
+      "subtitle": "Petualangan di Perut Bumi",
+      "description": "Saksikan stalaktit dan stalagmit yang terbentuk selama jutaan tahun dengan keempat mata air mistis",
+      "cta": "Baca Selengkapnya"
+    },
+    "slide3": {
+      "title": "Gua Petruk",
+      "subtitle": "Eksplorasi Gua Karst Gombong Selatan",
+      "description": "Raih tantangan susur gua yang mendebarkan di kawasan karst dengan 365 gua dan 982 bukit",
+      "cta": "Temukan Petualangan"
+    },
+    "slide4": {
+      "title": "Geopark Kebumen",
+      "subtitle": "Warisan Geologi Dunia UNESCO",
+      "description": "Jelajahi kekayaan geologi dan keindahan alam yang telah diakui dunia",
+      "cta": "Selengkapnya"
+    }
+  },
+  "featured": {
+    "title": "Tempat Wisata Populer",
+    "subtitle": "Jelajahi destinasi wisata terbaik di Kabupaten Kebumen yang menawarkan keindahan alam dan pengalaman tak terlupakan",
+    "cta": "Lihat Semua Destinasi"
+  },
+  "articles": {
+    "title": "Artikel & Berita",
+    "subtitle": "Tetap terkini dengan berita terbaru, tips perjalanan, dan cerita menarik dari Kabupaten Kebumen",
+    "latest": "Artikel Terbaru",
+    "readTime": "{count} menit baca"
+  },
+  "stats": {
+    "title": "Kekayaan Alam yang Luar Biasa",
+    "subtitle": "Kabupaten Kebumen menyimpan beragam potensi pariwisata alam yang menakjubkan, mulai dari pantai hingga gua purba",
+    "destinations": "Destinasi Wisata",
+    "caves": "Gua Karst",
+    "beach": "Garis Pantai",
+    "hills": "Bukit Karst"
+  },
+  "destinations": {
+    "title": "Destinasi Wisata",
+    "subtitle": "Temukan keindahan alam dan tempat menarik di Kabupaten Kebumen yang menunggu untuk dijelajahi",
+    "ticket": "Tiket",
+    "hours": "Jam Operasional",
+    "facilities": "Fasilitas",
+    "location": "Lokasi",
+    "more": "+{count} lainnya"
+  },
+  "about": {
+    "title": "Tentang Kebumen",
+    "subtitle": "Mengenal lebih dekat Kabupaten Kebumen, sebuah permata tersembunyi di pesisir selatan Jawa Tengah",
+    "geography": {
+      "label": "Geografi & Lokasi",
+      "title": "Kabupaten Kebumen",
+      "description1": "Kabupaten Kebumen adalah sebuah daerah kabupaten yang terletak di Provinsi Jawa Tengah, Indonesia. Kabupaten ini dikenal dengan julukan \"Kota Walet\" dan memiliki luas wilayah yang mencakup dataran rendah pesisir hingga pegunungan karst.",
+      "description2": "Terletak di pantai selatan Pulau Jawa, Kebumen memiliki garis pantai sepanjang ±20 km yang berbatasan dengan Samudra Hindia. Di sebelah utara, kabupaten ini dikelilingi oleh pegunungan kapur (karst) yang menjadi salah satu kawasan geopark terbesar di Asia Tenggara.",
+      "area": "Luas Wilayah",
+      "population": "Populasi",
+      "areaValue": "1.281,57 km²",
+      "populationValue": "± 1,2 juta jiwa"
+    },
+    "geopark": {
+      "label": "Kekayaan Alam",
+      "title": "Geopark Karst Gombong Selatan",
+      "description1": "Kabupaten Kebumen memiliki kawasan karst Gombong Selatan yang luar biasa. Dengan sekitar 365 gua dan 982 bukit karst, kawasan ini merupakan salah satu yang terbesar di dunia dan telah diakui sebagai Geopark Global UNESCO.",
+      "description2": "Formasi batuan kapur yang telah terbentuk selama jutaan tahun menciptakan pemandangan spektakuler yang menjadi rumah bagi berbagai flora dan fauna endemik, serta menyimpan banyak misteri dan legenda yang menarik.",
+      "cta": "Jelajahi Destinasi"
+    },
+    "facts": {
+      "title": "Fakta Menarik Kebumen",
+      "caves": {
+        "title": "365 Gua Karst",
+        "description": "Kawasan karst Gombong Selatan memiliki sekitar 365 gua yang menunggu untuk dijelajahi, menjadikan Kebumen surga bagi para speleolog dan pecinta petualangan."
+      },
+      "beach": {
+        "title": "20 KM Garis Pantai",
+        "description": "Pantai-pantai cantik di pesisir selatan dengan pasir hitam eksotis dan ombak yang cocok untuk surfing dan olahraga air lainnya."
+      },
+      "history": {
+        "title": "Sejarah Panjang",
+        "description": "Gua Jatijajar ditemukan sejak tahun 1802 dan menyimpan berbagai cerita legendaris tentang Raden Kamandaka dan Nyi Roro Kidul."
+      }
+    },
+    "cta": {
+      "title": "Siap Menjelajahi Kebumen?",
+      "subtitle": "Temukan keindahan alam, kekayaan budaya, dan kehangatan masyarakat Kebumen dalam pengalaman perjalanan yang tak terlupakan.",
+      "button1": "Lihat Destinasi",
+      "button2": "Baca Artikel"
+    }
+  },
+  "footer": {
+    "tagline": "Portal resmi pariwisata Kabupaten Kebumen, Jawa Tengah. Temukan keindahan alam dan warisan budaya yang menakjubkan.",
+    "navigation": "Navigasi",
+    "popular": "Destinasi Populer",
+    "contact": "Kontak",
+    "address": "Jl. K.H. Hasyim Asy'ari No.6, Kebumen, Jawa Tengah",
+    "hours": "Senin - Jumat: 08.00 - 16.00 WIB",
+    "copyright": "Hak Cipta Dilindungi."
+  },
+  "article": {
+    "backToArticles": "Kembali ke Artikel",
+    "readTime": "{count} menit baca"
+  }
+}

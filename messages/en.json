@@ -1,0 +1,138 @@
+{
+  "common": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "articles": "Articles",
+    "about": "About",
+    "explore": "Explore",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "back": "Back",
+    "share": "Share",
+    "loading": "Loading...",
+    "loadMore": "Load more...",
+    "noMore": "You have viewed all articles",
+    "search": "Search",
+    "categories": "Categories",
+    "tags": "Tags",
+    "relatedArticles": "Related Articles",
+    "minutes": "min",
+    "author": "Author",
+    "publishedAt": "Published"
+  },
+  "nav": {
+    "home": "Home",
+    "destinations": "Destinations",
+    "articles": "Articles",
+    "about": "About"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Pantai Logending",
+      "subtitle": "Southern Beach Beauty with Historical Touch",
+      "description": "Enjoy spectacular views of Bodo River estuary and exotic black sand beaches",
+      "cta": "Explore Now"
+    },
+    "slide2": {
+      "title": "Gua Jatijajar",
+      "subtitle": "Adventure Underground",
+      "description": "Witness stalactites and stalagmites formed over millions of years with four mystical water springs",
+      "cta": "Read More"
+    },
+    "slide3": {
+      "title": "Gua Petruk",
+      "subtitle": "Explore Gombong Selatan Karst Caves",
+      "description": "Take on thrilling cave exploration in a karst area with 365 caves and 982 hills",
+      "cta": "Find Adventure"
+    },
+    "slide4": {
+      "title": "Geopark Kebumen",
+      "subtitle": "UNESCO World Geological Heritage",
+      "description": "Explore geological richness and natural beauty recognized by the world",
+      "cta": "Learn More"
+    }
+  },
+  "featured": {
+    "title": "Popular Tourist Spots",
+    "subtitle": "Explore the best tourist destinations in Kebumen Regency offering stunning natural beauty and unforgettable experiences",
+    "cta": "View All Destinations"
+  },
+  "articles": {
+    "title": "Articles & News",
+    "subtitle": "Stay updated with the latest news, travel tips, and interesting stories from Kebumen Regency",
+    "latest": "Latest Articles",
+    "readTime": "{count} min read"
+  },
+  "stats": {
+    "title": "Extraordinary Natural Wealth",
+    "subtitle": "Kebumen Regency holds various amazing natural tourism potentials, from beaches to ancient caves",
+    "destinations": "Tourist Destinations",
+    "caves": "Karst Caves",
+    "beach": "Coastline",
+    "hills": "Karst Hills"
+  },
+  "destinations": {
+    "title": "Tourist Destinations",
+    "subtitle": "Discover natural beauty and interesting places in Kebumen Regency waiting to be explored",
+    "ticket": "Ticket",
+    "hours": "Operating Hours",
+    "facilities": "Facilities",
+    "location": "Location",
+    "more": "+{count} more"
+  },
+  "about": {
+    "title": "About Kebumen",
+    "subtitle": "Get to know Kebumen Regency better, a hidden gem on the south coast of Central Java",
+    "geography": {
+      "label": "Geography & Location",
+      "title": "Kebumen Regency",
+      "description1": "Kebumen Regency is a regency located in Central Java Province, Indonesia. The regency is known as the \"City of Swifts\" and has an area covering lowland coasts to karst mountains.",
+      "description2": "Located on the south coast of Java Island, Kebumen has a coastline of approximately 20 km bordering the Indian Ocean. To the north, the regency is surrounded by limestone (karst) mountains which are one of the largest geopark areas in Southeast Asia.",
+      "area": "Area",
+      "population": "Population",
+      "areaValue": "1,281.57 km²",
+      "populationValue": "± 1.2 million"
+    },
+    "geopark": {
+      "label": "Natural Wealth",
+      "title": "Gombong Selatan Karst Geopark",
+      "description1": "Kebumen Regency has an extraordinary Gombong Selatan karst area. With approximately 365 caves and 982 karst hills, this area is one of the largest in the world and has been recognized as a UNESCO Global Geopark.",
+      "description2": "Limestone formations that have formed over millions of years create spectacular scenery that is home to various endemic flora and fauna, as well as holding many mysteries and interesting legends.",
+      "cta": "Explore Destinations"
+    },
+    "facts": {
+      "title": "Interesting Facts About Kebumen",
+      "caves": {
+        "title": "365 Karst Caves",
+        "description": "The Gombong Selatan karst area has about 365 caves waiting to be explored, making Kebumen a paradise for speleologists and adventure lovers."
+      },
+      "beach": {
+        "title": "20 KM Coastline",
+        "description": "Beautiful beaches on the southern coast with exotic black sand and waves suitable for surfing and other water sports."
+      },
+      "history": {
+        "title": "Long History",
+        "description": "Gua Jatijajar was discovered in 1802 and holds various legendary stories about Raden Kamandaka and Nyi Roro Kidul."
+      }
+    },
+    "cta": {
+      "title": "Ready to Explore Kebumen?",
+      "subtitle": "Discover natural beauty, cultural richness, and warmth of Kebumen people in an unforgettable travel experience.",
+      "button1": "View Destinations",
+      "button2": "Read Articles"
+    }
+  },
+  "footer": {
+    "tagline": "Official tourism portal of Kebumen Regency, Central Java. Discover stunning natural beauty and cultural heritage.",
+    "navigation": "Navigation",
+    "popular": "Popular Destinations",
+    "contact": "Contact",
+    "address": "Jl. K.H. Hasyim Asy'ari No.6, Kebumen, Central Java",
+    "hours": "Monday - Friday: 08.00 - 16.00 WIB",
+    "copyright": "All Rights Reserved."
+  },
+  "article": {
+    "backToArticles": "Back to Articles",
+    "readTime": "{count} min read"
+  }
+}
