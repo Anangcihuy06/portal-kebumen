@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin, Clock, Ticket, ArrowLeft, Share2, Users, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Clock, Ticket, ArrowLeft, Share2, Users, CheckCircle, ChevronLeft, ChevronRight, Facebook, Twitter, Link as LinkIcon, Check } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import DestinationCard from '@/components/shared/DestinationCard';
@@ -18,6 +18,8 @@ export default function DestinationDetailPage() {
   const [destination, setDestination] = useState<typeof allDestinations[0] | null>(null);
   const [loading, setLoading] = useState(true);
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
+  const [showShareMenu, setShowShareMenu] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const found = allDestinations.find((d) => d.slug === slug);
@@ -44,6 +46,49 @@ export default function DestinationDetailPage() {
         prev === 0 ? destination.gallery.length - 1 : prev - 1
       );
     }
+  };
+
+  const handleShare = async () => {
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const shareData = {
+      title: destination?.name || 'Destinasi Kebumen',
+      text: destination?.description || 'Kunjungi destinasi wisata ini di Kebumen!',
+      url: shareUrl,
+    };
+
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        if ((err as Error).name !== 'AbortError') {
+          setShowShareMenu(true);
+        }
+      }
+    } else {
+      setShowShareMenu(true);
+    }
+  };
+
+  const copyToClipboard = async () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
+  const shareToTwitter = () => {
+    const text = encodeURIComponent(`${destination?.name} - ${destination?.description?.slice(0, 100)}...`);
+    const url = encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '');
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+  };
+
+  const shareToFacebook = () => {
+    const url = encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '');
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
   };
 
   if (loading) {
@@ -237,10 +282,55 @@ export default function DestinationDetailPage() {
             >
               Baca Artikel Terkait
             </Link>
-            <button className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition-colors">
-              <Share2 className="w-4 h-4 mr-2" />
-              Bagikan
-            </button>
+            <div className="relative">
+              <button
+                onClick={handleShare}
+                className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition-colors"
+              >
+                <Share2 className="w-4 h-4 mr-2" />
+                Bagikan
+              </button>
+              {showShareMenu && (
+                <>
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={() => setShowShareMenu(false)}
+                  />
+                  <div className="absolute bottom-full mb-2 right-0 bg-white rounded-xl shadow-lg p-3 z-20 min-w-[180px]">
+                    <button
+                      onClick={shareToFacebook}
+                      className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                    >
+                      <Facebook className="w-4 h-4 mr-3 text-blue-600" />
+                      Facebook
+                    </button>
+                    <button
+                      onClick={shareToTwitter}
+                      className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                    >
+                      <Twitter className="w-4 h-4 mr-3 text-sky-500" />
+                      Twitter / X
+                    </button>
+                    <button
+                      onClick={copyToClipboard}
+                      className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                    >
+                      {copied ? (
+                        <>
+                          <Check className="w-4 h-4 mr-3 text-green-600" />
+                          <span className="text-green-600">Tersalin!</span>
+                        </>
+                      ) : (
+                        <>
+                          <LinkIcon className="w-4 h-4 mr-3 text-gray-500" />
+                          Copy Link
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

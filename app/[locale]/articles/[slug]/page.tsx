@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, Clock, User, ArrowLeft, Share2 } from 'lucide-react';
+import { Calendar, Clock, User, ArrowLeft, Share2, Facebook, Twitter, Link as LinkIcon, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import Navbar from '@/components/layout/Navbar';
@@ -22,10 +22,55 @@ export default function ArticleDetailPage() {
   const t = useTranslations('article');
   const tCommon = useTranslations('common');
   const locale = useLocale();
+  const [showShareMenu, setShowShareMenu] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     dispatch(fetchArticleDetailStart(slug));
   }, [dispatch, slug]);
+
+  const handleShare = async () => {
+    const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const shareData = {
+      title: currentArticle?.title || 'Artikel Kebumen',
+      text: currentArticle?.excerpt || 'Baca artikel menarik tentang Kebumen!',
+      url: shareUrl,
+    };
+
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        if ((err as Error).name !== 'AbortError') {
+          setShowShareMenu(true);
+        }
+      }
+    } else {
+      setShowShareMenu(true);
+    }
+  };
+
+  const copyToClipboard = async () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
+  const shareToTwitter = () => {
+    const text = encodeURIComponent(`${currentArticle?.title} - ${currentArticle?.excerpt?.slice(0, 100)}...`);
+    const url = encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '');
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+  };
+
+  const shareToFacebook = () => {
+    const url = encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '');
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+  };
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -103,10 +148,55 @@ export default function ArticleDetailPage() {
               <Clock className="w-4 h-4 mr-2" />
               {currentArticle.readTime} {tCommon('minutes')}
             </div>
-            <button className="flex items-center hover:text-black transition-colors">
-              <Share2 className="w-4 h-4 mr-2" />
-              {tCommon('share')}
-            </button>
+            <div className="relative">
+              <button
+                onClick={handleShare}
+                className="flex items-center hover:text-black transition-colors"
+              >
+                <Share2 className="w-4 h-4 mr-2" />
+                {tCommon('share')}
+              </button>
+              {showShareMenu && (
+                <>
+                  <div
+                    className="fixed inset-0 z-10"
+                    onClick={() => setShowShareMenu(false)}
+                  />
+                  <div className="absolute top-full mt-2 left-0 bg-white rounded-xl shadow-lg p-3 z-20 min-w-[180px]">
+                    <button
+                      onClick={shareToFacebook}
+                      className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                    >
+                      <Facebook className="w-4 h-4 mr-3 text-blue-600" />
+                      Facebook
+                    </button>
+                    <button
+                      onClick={shareToTwitter}
+                      className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                    >
+                      <Twitter className="w-4 h-4 mr-3 text-sky-500" />
+                      Twitter / X
+                    </button>
+                    <button
+                      onClick={copyToClipboard}
+                      className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                    >
+                      {copied ? (
+                        <>
+                          <Check className="w-4 h-4 mr-3 text-green-600" />
+                          <span className="text-green-600">Tersalin!</span>
+                        </>
+                      ) : (
+                        <>
+                          <LinkIcon className="w-4 h-4 mr-3 text-gray-500" />
+                          Copy Link
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
 
           <div className="relative h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden mb-12">
