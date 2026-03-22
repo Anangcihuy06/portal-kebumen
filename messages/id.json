@@ -134,5 +134,25 @@
   "article": {
     "backToArticles": "Kembali ke Artikel",
     "readTime": "{count} menit baca"
+  },
+  "recommendation": {
+    "title": "Rekomendasi AI",
+    "subtitle": "Temukan destinasi wisata yang sempurna untukmu dengan bantuan AI",
+    "hero": {
+      "title": "Rekomendasi Wisata",
+      "subtitle": "Ceritakan preferensi perjalananmu, dan AI kami akan menemukan destinasi terbaik di Kebumen",
+      "description": "Sistem rekomendasi hybrid kami menggabungkan preferensi kamu dengan data popularitas dan kesamaan konten untuk memberikan saran yang akurat"
+    },
+    "categoryTitle": "Kategori yang Diminati",
+    "categorySubtitle": "Pilih kategori wisata yang kamu sukai",
+    "budgetTitle": "Budget Perjalanan",
+    "durationTitle": "Durasi Perjalanan",
+    "styleTitle": "Gaya Perjalanan",
+    "activityTitle": "Aktivitas Favorit",
+    "activitySubtitle": "Pilih aktivitas yang ingin kamu lakukan",
+    "day": "hari",
+    "days": "hari",
+    "submit": "Dapatkan Rekomendasi",
+    "generating": "Membuat Rekomendasi..."
   }
 }

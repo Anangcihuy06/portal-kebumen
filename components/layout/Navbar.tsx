@@ -25,6 +25,7 @@ export default function Navbar({
   const navLinks = [
     { href: `/${locale}`, label: t('home'), exact: true },
     { href: `/${locale}/destinations`, label: t('destinations'), exact: false },
+    { href: `/${locale}/recommendations`, label: 'AI Rekomendasi', exact: false },
     { href: `/${locale}/articles`, label: t('articles'), exact: false },
     { href: `/${locale}/about`, label: t('about'), exact: false },
   ];

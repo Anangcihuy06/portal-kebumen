@@ -134,5 +134,25 @@
   "article": {
     "backToArticles": "Back to Articles",
     "readTime": "{count} min read"
+  },
+  "recommendation": {
+    "title": "AI Recommendations",
+    "subtitle": "Find the perfect tourist destinations for you with AI assistance",
+    "hero": {
+      "title": "Tourism Recommendations",
+      "subtitle": "Tell us your travel preferences, and our AI will find the best destinations in Kebumen",
+      "description": "Our hybrid recommendation system combines your preferences with popularity data and content similarity for accurate suggestions"
+    },
+    "categoryTitle": "Interested Categories",
+    "categorySubtitle": "Select the tourism categories you like",
+    "budgetTitle": "Travel Budget",
+    "durationTitle": "Trip Duration",
+    "styleTitle": "Travel Style",
+    "activityTitle": "Favorite Activities",
+    "activitySubtitle": "Select activities you want to do",
+    "day": "day",
+    "days": "days",
+    "submit": "Get Recommendations",
+    "generating": "Generating..."
   }
 }
