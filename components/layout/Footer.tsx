@@ -82,15 +82,19 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-gray-400 flex-shrink-0 mt-1" />
-                <span className="text-gray-400">{t('address')}</span>
+                <span className="text-gray-400">Dukuh Kiteran, Desa Bumirejo, Kec. Puring, Kab. Kebumen</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                <span className="text-gray-400">(0287) 383349</span>
+                <a href="tel:081393294652" className="text-gray-400 hover:text-white transition-colors">
+                  081393294652
+                </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                <span className="text-gray-400">kominfo@kebumenkab.go.id</span>
+                <a href="mailto:nanangw250@gmail.com" className="text-gray-400 hover:text-white transition-colors">
+                  nanangw250@gmail.com
+                </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Clock className="w-5 h-5 text-gray-400 flex-shrink-0" />
@@ -102,9 +106,14 @@ export default function Footer() {
 
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              &copy; {currentYear} Portal Pariwisata Kabupaten Kebumen. {t('copyright')}
-            </p>
+            <div className="text-center md:text-left">
+              <p className="text-gray-400 text-sm">
+                &copy; {currentYear} Portal Pariwisata Kabupaten Kebumen. {t('copyright')}
+              </p>
+              <p className="text-gray-500 text-xs mt-2">
+                Powered by <span className="text-white font-semibold">Ac Digital Agency</span>
+              </p>
+            </div>
 
             <div className="flex items-center space-x-4">
               <a
