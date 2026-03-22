@@ -24,30 +24,34 @@ export default function HeroSlider() {
       description: t('slide1.description'),
       image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80',
       cta: t('slide1.cta'),
+      slug: 'pantai-karang-bolong',
     },
     {
       id: 2,
       title: t('slide2.title'),
       subtitle: t('slide2.subtitle'),
       description: t('slide2.description'),
-      image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1920&q=80',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Goa_jati_jajar_ayah_kebumen.jpg',
       cta: t('slide2.cta'),
+      slug: 'gua-jatijajar',
     },
     {
       id: 3,
       title: t('slide3.title'),
       subtitle: t('slide3.subtitle'),
       description: t('slide3.description'),
-      image: 'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1920&q=80',
+      image: 'https://www.kebumenkab.go.id/resource/doc/potenda/images/29092025-013627-271_goa-petruk.jpg',
       cta: t('slide3.cta'),
+      slug: 'gua-petruk',
     },
     {
       id: 4,
       title: t('slide4.title'),
       subtitle: t('slide4.subtitle'),
       description: t('slide4.description'),
-      image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&q=80',
+      image: 'https://statik.tempo.co/data/2019/08/23/id_866415/866415_720.jpg',
       cta: t('slide4.cta'),
+      slug: 'geopark-kebumen',
     },
   ];
 
@@ -70,15 +74,17 @@ export default function HeroSlider() {
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={slide.id} className="h-full w-full">
-            <div className="relative h-full w-full">
-              <Image
-                src={slide.image}
-                alt={slide.title}
-                fill
-                priority={index === 0}
-                className="object-cover"
-                sizes="100vw"
-              />
+            <div className="relative h-full w-full overflow-hidden">
+              <div className="absolute inset-0">
+                <Image
+                  src={slide.image}
+                  alt={slide.title}
+                  fill
+                  priority={index === 0}
+                  className="object-cover animate-kenburns"
+                  sizes="100vw"
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               <div className="absolute inset-0 flex items-end">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32 w-full">
@@ -93,7 +99,7 @@ export default function HeroSlider() {
                       {slide.description}
                     </p>
                     <Link
-                      href={`/${locale}/destinations`}
+                      href={`/${locale}/destinations/${slide.slug}`}
                       className="inline-flex items-center bg-white text-black px-8 py-4 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 hover:scale-105 animate-fadeInUp delay-300"
                     >
                       {slide.cta}

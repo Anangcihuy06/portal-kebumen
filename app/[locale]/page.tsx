@@ -22,7 +22,7 @@ export default function HomePage() {
 
   return (
     <main>
-      <Navbar />
+      <Navbar transparent />
       <HeroSlider />
       <FeaturedDestinations />
       <LatestArticles articles={articles} />

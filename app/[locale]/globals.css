@@ -163,6 +163,47 @@ h1, h2, h3, h4, h5, h6 {
 .delay-400 { animation-delay: 400ms; }
 .delay-500 { animation-delay: 500ms; }
 
+@keyframes kenBurns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+.ken-burns {
+  animation: kenBurns 8s ease-out forwards;
+}
+
+.slider-image-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.slider-image-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  transform: scale(1.15);
+  animation: kenBurns 8s ease-out forwards;
+}
+
+.animate-kenburns {
+  animation: kenBurns 8s ease-out forwards;
+}
+
+.swiper-slide-active .animate-kenburns {
+  animation: kenBurns 8s ease-out forwards;
+}
+
+.swiper-slide:not(.swiper-slide-active) .animate-kenburns {
+  animation: none;
+  transform: scale(1);
+}
+
 .swiper-pagination-bullet {
   background: white !important;
   width: 10px !important;
@@ -222,4 +263,16 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gray-dark);
+}
+
+.swiper {
+  overflow: visible !important;
+}
+
+.swiper-wrapper {
+  overflow: hidden;
+}
+
+.swiper-scrollbar {
+  display: none !important;
 }
