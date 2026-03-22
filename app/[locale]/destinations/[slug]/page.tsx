@@ -84,7 +84,7 @@ export default function DestinationDetailPage() {
       <Navbar transparent backgroundImage={destination.image} />
       
       <article className="pt-20 pb-20">
-        <div className="relative h-[60vh] min-h-[400px] max-h-[600px]">
+        <div className="relative h-[50vh] min-h-[300px] max-h-[450px]">
           <Image
             src={destination.image}
             alt={destination.name}
