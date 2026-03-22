@@ -11,7 +11,7 @@ interface DestinationCardProps {
 export default function DestinationCard({ destination, locale = 'id' }: DestinationCardProps) {
   return (
     <Link
-      href={`/${locale}/destinations`}
+      href={`/${locale}/destinations/${destination.slug}`}
       className="block bg-white rounded-2xl overflow-hidden shadow-lg card-hover"
     >
       <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
