@@ -7,7 +7,12 @@ import { useTranslations } from 'next-intl';
 import { useLocale } from 'next-intl';
 import { Menu, X, MapPin, Globe } from 'lucide-react';
 
-export default function Navbar() {
+interface NavbarProps {
+  transparent?: boolean;
+  backgroundImage?: string;
+}
+
+export default function Navbar({ transparent = false, backgroundImage }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
@@ -43,22 +48,35 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
+  const showTransparent = transparent && !isScrolled && !isMobileMenuOpen;
+
   return (
     <>
+      {backgroundImage && showTransparent && (
+        <div 
+          className="fixed inset-0 z-0 pointer-events-none"
+          style={{
+            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%), url(${backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      )}
+      
       <nav
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-          isScrolled || isMobileMenuOpen
-            ? 'bg-white shadow-lg'
-            : 'bg-gradient-to-b from-black/80 to-transparent'
+          showTransparent
+            ? 'bg-transparent'
+            : 'bg-white shadow-lg'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             <Link href={`/${locale}`} className="flex items-center space-x-2">
-              <MapPin className={`w-6 h-6 sm:w-8 sm:h-8 ${isScrolled || isMobileMenuOpen ? 'text-black' : 'text-white'}`} />
+              <MapPin className={`w-6 h-6 sm:w-8 sm:h-8 ${showTransparent ? 'text-white' : 'text-black'}`} />
               <span
                 className={`text-lg sm:text-xl font-bold font-playfair ${
-                  isScrolled || isMobileMenuOpen ? 'text-black' : 'text-white'
+                  showTransparent ? 'text-white' : 'text-black'
                 }`}
               >
                 KEBUMEN
@@ -72,12 +90,12 @@ export default function Navbar() {
                   href={link.href}
                   className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 ${
                     isActive(link.href, link.exact)
-                      ? isScrolled
-                        ? 'text-black bg-gray-100'
-                        : 'text-white bg-white/10'
-                      : isScrolled
-                      ? 'text-gray-600 hover:text-black hover:bg-gray-50'
-                      : 'text-white/80 hover:text-white hover:bg-white/10'
+                      ? showTransparent
+                        ? 'text-white bg-white/20'
+                        : 'text-black bg-gray-100'
+                      : showTransparent
+                      ? 'text-white/80 hover:text-white hover:bg-white/10'
+                      : 'text-gray-600 hover:text-black hover:bg-gray-50'
                   }`}
                 >
                   {link.label}
@@ -88,9 +106,9 @@ export default function Navbar() {
                 <Link
                   href={locale === 'id' ? '/en' : '/id'}
                   className={`flex items-center space-x-1.5 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                    isScrolled
-                      ? 'text-gray-700 hover:text-black hover:bg-gray-100'
-                      : 'text-white/90 hover:text-white hover:bg-white/10'
+                    showTransparent
+                      ? 'text-white/90 hover:text-white hover:bg-white/10'
+                      : 'text-gray-700 hover:text-black hover:bg-gray-100'
                   }`}
                 >
                   <Globe className="w-4 h-4" />
@@ -102,9 +120,9 @@ export default function Navbar() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`lg:hidden p-2 rounded-lg transition-colors ${
-                isScrolled || isMobileMenuOpen
-                  ? 'text-black hover:bg-gray-100'
-                  : 'text-white hover:bg-white/10'
+                showTransparent
+                  ? 'text-white hover:bg-white/10'
+                  : 'text-black hover:bg-gray-100'
               }`}
               aria-label="Toggle menu"
             >
@@ -120,7 +138,7 @@ export default function Navbar() {
         }`}
       >
         <div 
-          className={`absolute inset-0 bg-black/50 transition-opacity ${isMobileMenuOpen ? '' : 'hidden'}`}
+          className={`absolute inset-0 bg-black/50 ${isMobileMenuOpen ? '' : 'hidden'}`}
           onClick={() => setIsMobileMenuOpen(false)}
         />
         

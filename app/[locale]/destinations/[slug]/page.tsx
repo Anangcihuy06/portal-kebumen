@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin, Clock, Ticket, ArrowLeft, Share2, Users, Calendar, CheckCircle } from 'lucide-react';
+import { MapPin, Clock, Ticket, ArrowLeft, Share2, Users, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import DestinationCard from '@/components/shared/DestinationCard';
@@ -17,21 +17,39 @@ export default function DestinationDetailPage() {
   const locale = useLocale();
   const [destination, setDestination] = useState<typeof allDestinations[0] | null>(null);
   const [loading, setLoading] = useState(true);
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
 
   useEffect(() => {
     const found = allDestinations.find((d) => d.slug === slug);
     setDestination(found || null);
     setLoading(false);
+    setCurrentGalleryIndex(0);
   }, [slug]);
 
   const relatedDestinations = allDestinations
     .filter((d) => d.slug !== slug)
     .slice(0, 3);
 
+  const nextGalleryImage = () => {
+    if (destination) {
+      setCurrentGalleryIndex((prev) => 
+        prev === destination.gallery.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevGalleryImage = () => {
+    if (destination) {
+      setCurrentGalleryIndex((prev) => 
+        prev === 0 ? destination.gallery.length - 1 : prev - 1
+      );
+    }
+  };
+
   if (loading) {
     return (
       <main className="min-h-screen bg-white">
-        <Navbar />
+        <Navbar transparent backgroundImage="" />
         <div className="pt-32 pb-20">
           <div className="max-w-4xl mx-auto px-4">
             <div className="h-80 bg-gray-200 rounded-2xl animate-pulse mb-8" />
@@ -63,10 +81,10 @@ export default function DestinationDetailPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      <Navbar />
+      <Navbar transparent backgroundImage={destination.image} />
       
       <article className="pt-20 pb-20">
-        <div className="relative h-[50vh] min-h-[300px] max-h-[500px]">
+        <div className="relative h-[60vh] min-h-[400px] max-h-[600px]">
           <Image
             src={destination.image}
             alt={destination.name}
@@ -74,7 +92,7 @@ export default function DestinationDetailPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           
           <div className="absolute inset-0 flex items-end">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 w-full">
@@ -151,18 +169,57 @@ export default function DestinationDetailPage() {
 
           <div className="mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold font-playfair mb-4">Galeri</h2>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4">
-              {destination.gallery.map((img, index) => (
-                <div key={index} className="relative h-40 sm:h-48 md:h-56 rounded-2xl overflow-hidden">
-                  <Image
-                    src={img}
-                    alt={`${destination.name} gallery ${index + 1}`}
-                    fill
-                    className="object-cover hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              ))}
+            
+            <div className="relative rounded-2xl overflow-hidden">
+              <div className="relative h-[300px] sm:h-[400px] md:h-[500px]">
+                <Image
+                  src={destination.gallery[currentGalleryIndex]}
+                  alt={`${destination.name} - Image ${currentGalleryIndex + 1}`}
+                  fill
+                  className="object-cover transition-opacity duration-300"
+                  priority
+                />
+              </div>
+              
+              {destination.gallery.length > 1 && (
+                <>
+                  <button
+                    onClick={prevGalleryImage}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="w-6 h-6 text-black" />
+                  </button>
+                  
+                  <button
+                    onClick={nextGalleryImage}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="w-6 h-6 text-black" />
+                  </button>
+                  
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                    {destination.gallery.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentGalleryIndex(index)}
+                        className={`w-2.5 h-2.5 rounded-full transition-all ${
+                          index === currentGalleryIndex
+                            ? 'bg-white w-8'
+                            : 'bg-white/50 hover:bg-white/80'
+                        }`}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
+            
+            <p className="text-center text-sm text-gray-500 mt-3">
+              {currentGalleryIndex + 1} / {destination.gallery.length}
+            </p>
           </div>
 
           <div className="p-6 bg-black text-white rounded-2xl text-center">
