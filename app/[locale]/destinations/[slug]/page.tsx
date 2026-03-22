@@ -49,7 +49,7 @@ export default function DestinationDetailPage() {
   if (loading) {
     return (
       <main className="min-h-screen bg-white">
-        <Navbar transparent backgroundImage="" />
+        <Navbar />
         <div className="pt-32 pb-20">
           <div className="max-w-4xl mx-auto px-4">
             <div className="h-80 bg-gray-200 rounded-2xl animate-pulse mb-8" />
@@ -83,7 +83,7 @@ export default function DestinationDetailPage() {
     <main className="min-h-screen bg-white">
       <Navbar transparent backgroundImage={destination.image} />
       
-      <article className="pt-20 pb-20">
+      <div className="pt-20">
         <div className="relative h-[50vh] min-h-[300px] max-h-[450px]">
           <Image
             src={destination.image}
@@ -92,7 +92,7 @@ export default function DestinationDetailPage() {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
           
           <div className="absolute inset-0 flex items-end">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 w-full">
@@ -115,135 +115,135 @@ export default function DestinationDetailPage() {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 p-4 sm:p-6 bg-gray-light rounded-2xl">
-            <div className="text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full mx-auto mb-2 shadow-sm">
-                <Ticket className="w-5 h-5 text-black" />
-              </div>
-              <p className="text-xs sm:text-sm text-gray-500">Tiket Masuk</p>
-              <p className="text-sm sm:text-base font-semibold">{destination.ticketPrice}</p>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 p-4 sm:p-6 bg-gray-light rounded-2xl">
+          <div className="text-center">
+            <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full mx-auto mb-2 shadow-sm">
+              <Ticket className="w-5 h-5 text-black" />
             </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full mx-auto mb-2 shadow-sm">
-                <Clock className="w-5 h-5 text-black" />
-              </div>
-              <p className="text-xs sm:text-sm text-gray-500">Jam Operasional</p>
-              <p className="text-sm sm:text-base font-semibold">{destination.hours}</p>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full mx-auto mb-2 shadow-sm">
-                <Users className="w-5 h-5 text-black" />
-              </div>
-              <p className="text-xs sm:text-sm text-gray-500">Fasilitas</p>
-              <p className="text-sm sm:text-base font-semibold">{destination.facilities.length}+</p>
-            </div>
-            <div className="text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full mx-auto mb-2 shadow-sm">
-                <MapPin className="w-5 h-5 text-black" />
-              </div>
-              <p className="text-xs sm:text-sm text-gray-500">Lokasi</p>
-              <p className="text-sm sm:text-base font-semibold">Kebumen</p>
-            </div>
+            <p className="text-xs sm:text-sm text-gray-500">Tiket Masuk</p>
+            <p className="text-sm sm:text-base font-semibold">{destination.ticketPrice}</p>
           </div>
-
-          <div className="mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold font-playfair mb-4">Tentang</h2>
-            <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
-              {destination.description}
-            </p>
-          </div>
-
-          <div className="mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold font-playfair mb-4">Fasilitas</h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {destination.facilities.map((facility, index) => (
-                <div key={index} className="flex items-center p-3 bg-gray-light rounded-xl">
-                  <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" />
-                  <span className="text-sm sm:text-base">{facility}</span>
-                </div>
-              ))}
+          <div className="text-center">
+            <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full mx-auto mb-2 shadow-sm">
+              <Clock className="w-5 h-5 text-black" />
             </div>
+            <p className="text-xs sm:text-sm text-gray-500">Jam Operasional</p>
+            <p className="text-sm sm:text-base font-semibold">{destination.hours}</p>
           </div>
-
-          <div className="mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold font-playfair mb-4">Galeri</h2>
-            
-            <div className="relative rounded-2xl overflow-hidden">
-              <div className="relative h-[300px] sm:h-[400px] md:h-[500px]">
-                <Image
-                  src={destination.gallery[currentGalleryIndex]}
-                  alt={`${destination.name} - Image ${currentGalleryIndex + 1}`}
-                  fill
-                  className="object-cover transition-opacity duration-300"
-                  priority
-                />
-              </div>
-              
-              {destination.gallery.length > 1 && (
-                <>
-                  <button
-                    onClick={prevGalleryImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft className="w-6 h-6 text-black" />
-                  </button>
-                  
-                  <button
-                    onClick={nextGalleryImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
-                    aria-label="Next image"
-                  >
-                    <ChevronRight className="w-6 h-6 text-black" />
-                  </button>
-                  
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
-                    {destination.gallery.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentGalleryIndex(index)}
-                        className={`w-2.5 h-2.5 rounded-full transition-all ${
-                          index === currentGalleryIndex
-                            ? 'bg-white w-8'
-                            : 'bg-white/50 hover:bg-white/80'
-                        }`}
-                        aria-label={`Go to image ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
+          <div className="text-center">
+            <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full mx-auto mb-2 shadow-sm">
+              <Users className="w-5 h-5 text-black" />
             </div>
-            
-            <p className="text-center text-sm text-gray-500 mt-3">
-              {currentGalleryIndex + 1} / {destination.gallery.length}
-            </p>
+            <p className="text-xs sm:text-sm text-gray-500">Fasilitas</p>
+            <p className="text-sm sm:text-base font-semibold">{destination.facilities.length}+</p>
           </div>
-
-          <div className="p-6 bg-black text-white rounded-2xl text-center">
-            <h3 className="text-xl sm:text-2xl font-bold font-playfair mb-2">
-              Siap Mengunjungi {destination.name}?
-            </h3>
-            <p className="text-gray-300 mb-4 text-sm sm:text-base">
-              Nikmati keindahan dan keunikan destinasi wisata ini bersama keluarga dan teman
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
-                href={`/${locale}/articles`}
-                className="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-colors"
-              >
-                Baca Artikel Terkait
-              </Link>
-              <button className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition-colors">
-                <Share2 className="w-4 h-4 mr-2" />
-                Bagikan
-              </button>
+          <div className="text-center">
+            <div className="flex items-center justify-center w-12 h-12 bg-white rounded-full mx-auto mb-2 shadow-sm">
+              <MapPin className="w-5 h-5 text-black" />
             </div>
+            <p className="text-xs sm:text-sm text-gray-500">Lokasi</p>
+            <p className="text-sm sm:text-base font-semibold">Kebumen</p>
           </div>
         </div>
-      </article>
+
+        <div className="mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold font-playfair mb-4">Tentang</h2>
+          <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
+            {destination.description}
+          </p>
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold font-playfair mb-4">Fasilitas</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            {destination.facilities.map((facility, index) => (
+              <div key={index} className="flex items-center p-3 bg-gray-light rounded-xl">
+                <CheckCircle className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" />
+                <span className="text-sm sm:text-base">{facility}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold font-playfair mb-4">Galeri</h2>
+          
+          <div className="relative rounded-2xl overflow-hidden">
+            <div className="relative h-[300px] sm:h-[400px] md:h-[500px]">
+              <Image
+                src={destination.gallery[currentGalleryIndex]}
+                alt={`${destination.name} - Image ${currentGalleryIndex + 1}`}
+                fill
+                className="object-cover transition-opacity duration-300"
+                priority
+              />
+            </div>
+            
+            {destination.gallery.length > 1 && (
+              <>
+                <button
+                  onClick={prevGalleryImage}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-6 h-6 text-black" />
+                </button>
+                
+                <button
+                  onClick={nextGalleryImage}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-6 h-6 text-black" />
+                </button>
+                
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                  {destination.gallery.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentGalleryIndex(index)}
+                      className={`w-2.5 h-2.5 rounded-full transition-all ${
+                        index === currentGalleryIndex
+                          ? 'bg-white w-8'
+                          : 'bg-white/50 hover:bg-white/80'
+                      }`}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+          
+          <p className="text-center text-sm text-gray-500 mt-3">
+            {currentGalleryIndex + 1} / {destination.gallery.length}
+          </p>
+        </div>
+
+        <div className="p-6 bg-black text-white rounded-2xl text-center">
+          <h3 className="text-xl sm:text-2xl font-bold font-playfair mb-2">
+            Siap Mengunjungi {destination.name}?
+          </h3>
+          <p className="text-gray-300 mb-4 text-sm sm:text-base">
+            Nikmati keindahan dan keunikan destinasi wisata ini bersama keluarga dan teman
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href={`/${locale}/articles`}
+              className="inline-flex items-center justify-center px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-colors"
+            >
+              Baca Artikel Terkait
+            </Link>
+            <button className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition-colors">
+              <Share2 className="w-4 h-4 mr-2" />
+              Bagikan
+            </button>
+          </div>
+        </div>
+      </div>
 
       <section className="py-16 sm:py-20 bg-gray-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
